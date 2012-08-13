@@ -51,15 +51,13 @@ func readlines() chan bool {
 	go func() {
 		r := bufio.NewReader(os.Stdin)
 		for {
-			_, isPrefix, err := r.ReadLine()
+			_, err := r.ReadBytes('\n')
 			if err != nil {
-				fmt.Fprintln(os.Stderr, "ReadLine error:", err)
+				fmt.Fprintln(os.Stderr, "ReadBytes error:", err)
 				// Overkill?  Assumes process will be automatically restarted on exit.
 				os.Exit(1)
 			}
-			if !isPrefix {
-				c <- true
-			}
+			c <- true
 		}
 	}()
 	return c
