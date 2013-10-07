@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"github.com/stathat/stathatgo"
+	"github.com/stathat/go"
 	"os"
 	"time"
 )
